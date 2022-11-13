@@ -9,4 +9,4 @@ This repo contains a well written web UI Automation Framework build in with belo
 5. Maven : as build tool.
 6. Apache POI API : used for getting test data from excel
 7. ThreadLocal: for enabling Parallel execution.
-8. Extent Reports : used for generated test output/reporing 
+8. Extent Reports : used for generated test output/reporting 
