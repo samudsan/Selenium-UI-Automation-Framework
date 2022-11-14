@@ -1,17 +1,18 @@
 package com.san.driver;
 
 import com.san.constants.FrameworkConstants;
+import com.san.utils.ReadPropertyFile;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Driver {
 
-    private static ThreadLocal<WebDriver> threadLocalDriver =  new ThreadLocal<>();
+    private final static ThreadLocal<WebDriver> threadLocalDriver =  new ThreadLocal<>();
 
-    public static void  inItDriver() throws InterruptedException {
+    public static void  inItDriver() throws Exception {
         System.setProperty("webdriver.chrome.driver", FrameworkConstants.getChromeDriverPath());
         threadLocalDriver.set(new ChromeDriver());
-        getDriver().get("https://www.adp.com");
+        getDriver().get(ReadPropertyFile.getValue("url"));
     }
     public static WebDriver getDriver(){
         return threadLocalDriver.get();
