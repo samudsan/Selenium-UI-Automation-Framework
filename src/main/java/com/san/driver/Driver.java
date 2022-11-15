@@ -12,7 +12,7 @@ public class Driver {
     public static void  inItDriver() throws Exception {
         System.setProperty("webdriver.chrome.driver", FrameworkConstants.getChromeDriverPath());
         threadLocalDriver.set(new ChromeDriver());
-        getDriver().get(ReadPropertyFile.getValue("url"));
+        //getDriver().get(ReadPropertyFile.getValue("url"));
     }
     public static WebDriver getDriver(){
         return threadLocalDriver.get();

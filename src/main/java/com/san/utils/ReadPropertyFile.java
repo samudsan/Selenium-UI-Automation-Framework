@@ -1,5 +1,7 @@
 package com.san.utils;
 
+import com.san.constants.FrameworkConstants;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
@@ -17,7 +19,7 @@ public final class ReadPropertyFile {
     static { // This block is for loading properties at ONCE and storing all properties in an HashMap.
         try {
             Properties property = new Properties();
-            FileInputStream file = new FileInputStream(System.getProperty("user.dir") + "/src/test/resources/config/config.properties");
+            FileInputStream file = new FileInputStream(FrameworkConstants.getConfigPropertyFilePath());
             property.load(file);
 
             for (Map.Entry<Object, Object> entry:property.entrySet()) {
