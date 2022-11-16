@@ -3,8 +3,7 @@
 <suite name="Selenium Automation Framework">
     <test thread-count="5" parallel="methods" name="Regression">
         <classes>
-            <class name="com.san.tests.LoginPageTests"/>
-            <class name="com.san.tests.HomePageTests"/>
+            <class name="com.san.tests.OrangeHRMTests"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

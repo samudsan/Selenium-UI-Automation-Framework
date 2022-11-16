@@ -23,7 +23,7 @@ public final class ReadPropertyFile {
             property.load(file);
 
             for (Map.Entry<Object, Object> entry:property.entrySet()) {
-                CONFIGMAP.put((String) entry.getKey(), (String) entry.getValue());
+                CONFIGMAP.put(((String) entry.getKey()).trim(), ((String) entry.getValue()).trim()); //trim is to avoid leading/trailing spaces from property file.
             }
         }
         catch (IOException e){
