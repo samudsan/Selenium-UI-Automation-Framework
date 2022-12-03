@@ -16,13 +16,14 @@ public final class OrangeHRMLoginpage {
     }
 
     public OrangeHRMLoginpage enterUserpassword(String password){
-        Driver.getDriver().findElement(textbox_username).sendKeys(password);
+        Driver.getDriver().findElement(textbox_password).sendKeys(password);
         return this;
     }
 
-    public OrangeHRMHomepage clickLogin(){
+    public OrangeHRMHomepage clickLogin() throws Exception {
         Driver.getDriver().findElement(button_login).click();
         return new OrangeHRMHomepage();
+
     }
 
 
