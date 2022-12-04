@@ -18,7 +18,6 @@ public final class OrangeHRMTests extends BaseTest{
     public void logoutTest() throws Exception {
         OrangeHRMLoginpage loginPage = new OrangeHRMLoginpage();
         OrangeHRMHomepage homepage = loginPage.enterUserName("admin").enterUserpassword("admin123").clickLogin();
-        Thread.sleep(5000);
         homepage.clickWelcome().clickLogout();
     }
 }
