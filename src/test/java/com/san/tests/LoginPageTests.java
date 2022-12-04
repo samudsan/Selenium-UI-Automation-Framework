@@ -1,9 +1,5 @@
 package com.san.tests;
 
-import com.san.driver.Driver;
-import com.san.utils.ReadPropertyFile;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
 
 public final class LoginPageTests extends BaseTest{

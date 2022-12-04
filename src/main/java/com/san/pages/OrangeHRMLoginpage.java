@@ -1,6 +1,6 @@
 package com.san.pages;
 
-import com.san.driver.Driver;
+import com.san.enums.WaitStrategy;
 import org.openqa.selenium.By;
 
 public final class OrangeHRMLoginpage extends BasePage{
@@ -11,17 +11,17 @@ public final class OrangeHRMLoginpage extends BasePage{
 
 
     public OrangeHRMLoginpage enterUserName(String username){
-        sendKeys(textbox_username, username);
+        sendKeys(textbox_username, username, WaitStrategy.PRESENSE);
         return new OrangeHRMLoginpage(); //same we can achieve through return this
     }
 
     public OrangeHRMLoginpage enterUserpassword(String password){
-        sendKeys(textbox_password, password);
+        sendKeys(textbox_password, password, WaitStrategy.PRESENSE);
         return this;
     }
 
     public OrangeHRMHomepage clickLogin() throws Exception {
-        click(button_login);
+        click(button_login, WaitStrategy.CLICKABLE);
         return new OrangeHRMHomepage();
     }
 

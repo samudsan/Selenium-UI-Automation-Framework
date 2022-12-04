@@ -1,6 +1,7 @@
 package com.san.utils;
 
 import com.san.constants.FrameworkConstants;
+import com.san.enums.ConfigProperties;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -30,9 +31,9 @@ public final class ReadPropertyFile {
             e.printStackTrace();
         }
     }
-    public static String getValue(String key) throws Exception {
-        if(Objects.isNull(key) || Objects.isNull(CONFIGMAP.get(key))) // Here we are doing null check of key/value
+    public static String getValue(ConfigProperties key) throws Exception {
+        if(Objects.isNull(key) || Objects.isNull(CONFIGMAP.get(key.name().toLowerCase()))) // Here we are doing null check of key/value
             throw new Exception("There is no property available with key: "+key+ " Please check config.properties file");
-        return CONFIGMAP.get(key);
+        return CONFIGMAP.get(key.name().toLowerCase());
     }
 }

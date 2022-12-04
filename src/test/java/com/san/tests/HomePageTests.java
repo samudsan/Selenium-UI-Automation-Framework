@@ -1,17 +1,12 @@
 package com.san.tests;
 
 
-import com.san.constants.FrameworkConstants;
 import com.san.driver.Driver;
+import com.san.enums.ConfigProperties;
 import com.san.utils.ReadPropertyFile;
 import org.assertj.core.api.Assertions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.util.Objects;
 
 public final class HomePageTests extends BaseTest{
 
@@ -21,7 +16,7 @@ public final class HomePageTests extends BaseTest{
     // let us assume we have to validate Title contains amazon, title is not null, not empty, contains letters >5 and less 100 etc.
     @Test
     public void test1WithoutAssertJ() throws Exception {
-        Driver.getDriver().get(ReadPropertyFile.getValue("url"));
+        Driver.getDriver().get(ReadPropertyFile.getValue(ConfigProperties.URL));
         String title  = Driver.getDriver().getTitle();
         System.out.println("our Title is : "+title);
 
@@ -34,7 +29,7 @@ public final class HomePageTests extends BaseTest{
 
     @Test
     public void test2WithAssertJ() throws Exception {
-        Driver.getDriver().get(ReadPropertyFile.getValue("url"));
+        Driver.getDriver().get(ReadPropertyFile.getValue(ConfigProperties.URL));
         String title  = Driver.getDriver().getTitle();
         System.out.println("our Title is : "+title);
 

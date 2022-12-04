@@ -1,6 +1,7 @@
 package com.san.driver;
 
 import com.san.constants.FrameworkConstants;
+import com.san.enums.ConfigProperties;
 import com.san.utils.ReadPropertyFile;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,7 +13,7 @@ public class Driver {
     public static void  inItDriver() throws Exception {
         System.setProperty("webdriver.chrome.driver", FrameworkConstants.getChromeDriverPath());
         threadLocalDriver.set(new ChromeDriver());
-        getDriver().get(ReadPropertyFile.getValue("url"));
+        getDriver().get(ReadPropertyFile.getValue(ConfigProperties.URL));
         Thread.sleep(4000);
     }
     public static WebDriver getDriver(){
