@@ -43,8 +43,6 @@
             <artifactId>extentreports</artifactId>
             <version>${extent.reports.version}</version>
         </dependency>
-
-
     </dependencies>
 
     <properties>

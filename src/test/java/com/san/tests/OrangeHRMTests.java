@@ -2,6 +2,7 @@ package com.san.tests;
 
 import com.san.pages.OrangeHRMHomepage;
 import com.san.pages.OrangeHRMLoginpage;
+import com.san.reports.ExtentReport;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.assertj.core.api.Assertions;
@@ -20,15 +21,18 @@ public final class OrangeHRMTests extends BaseTest{
 
     @Test(dataProvider = "loginDataProvider")
     public void loginLogoutTest(Map<String, String> map) throws Exception {
+        ExtentReport.createTest("loginLogoutTest");
         OrangeHRMLoginpage loginPage = new OrangeHRMLoginpage();
         String title = loginPage.enterUserName(map.get("username"))
                 .enterUserpassword(map.get("password")).clickLogin().getTittle();
         // Validation
         Assertions.assertThat(title).isEqualTo("OrangeHRM");
+
     }
 
     @Test()
     public void logoutTest() throws Exception {
+        ExtentReport.createTest("logoutTest");
         OrangeHRMLoginpage loginPage = new OrangeHRMLoginpage();
         OrangeHRMHomepage homepage = loginPage.enterUserName("admin").enterUserpassword("admin123").clickLogin();
         homepage.clickWelcome().clickLogout();
