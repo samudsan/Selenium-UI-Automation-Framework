@@ -4,6 +4,7 @@ import com.san.pages.OrangeHRMHomepage;
 import com.san.pages.OrangeHRMLoginpage;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.assertj.core.api.Assertions;
 import org.bouncycastle.its.asn1.IValue;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -20,8 +21,10 @@ public final class OrangeHRMTests extends BaseTest{
     @Test(dataProvider = "loginDataProvider")
     public void loginLogoutTest(Map<String, String> map) throws Exception {
         OrangeHRMLoginpage loginPage = new OrangeHRMLoginpage();
-        loginPage.enterUserName(map.get("username"))
-                .enterUserpassword(map.get("password")).clickLogin();
+        String title = loginPage.enterUserName(map.get("username"))
+                .enterUserpassword(map.get("password")).clickLogin().getTittle();
+        // Validation
+        Assertions.assertThat(title).isEqualTo("OrangeHRM");
     }
 
     @Test()
@@ -32,7 +35,7 @@ public final class OrangeHRMTests extends BaseTest{
     }
 
 
-    @DataProvider()
+    @DataProvider(name="loginDataProvider", parallel = true)
     protected Object[] loginDataProvider() throws IOException {
         System.out.println("Path:"+  System.getProperty("user.dir")+"\\testdata\\testdata.xlsx");
         FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"/testdata/testdata.xlsx");
@@ -41,9 +44,9 @@ public final class OrangeHRMTests extends BaseTest{
         int row = sheet.getLastRowNum();
         System.out.println("row = " + row);
         int column = sheet.getRow(0).getLastCellNum();
-
         Object[] data =   new Object[row];
         Map<String, String> map;
+
         for (int i=1; i<5; i++){
             map = new HashMap<>();
             for (int j=0; j<2; j++){
@@ -51,12 +54,8 @@ public final class OrangeHRMTests extends BaseTest{
                 String value = sheet.getRow(i).getCell(j).getStringCellValue();
                 map.put(key, value);
                 data[i-1] = map;
-                System.out.println("Object Length: "+data.length);
-                System.out.println("map length: "+map.size());
             }
         }
-
         return data;
     }
-
 }

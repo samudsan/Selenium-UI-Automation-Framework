@@ -1,5 +1,6 @@
 package com.san.pages;
 
+import com.san.driver.Driver;
 import com.san.enums.WaitStrategy;
 import org.openqa.selenium.By;
 
@@ -16,5 +17,9 @@ public final class OrangeHRMHomepage extends BasePage{
     public OrangeHRMLoginpage clickLogout(){
         click(link_logout, WaitStrategy.CLICKABLE);
         return new OrangeHRMLoginpage();
+    }
+
+    public String getTittle(){
+        return Driver.getDriver().getTitle();
     }
 }
