@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Selenium Automation Framework" data-provider-thread-count="2">
+    <listeners>
+        <listener class-name="com.san.listeners.MethodInterceptor"></listener>
+    </listeners>
     <test thread-count="1" parallel="methods" name="Regression">
         <classes>
-            <class name="com.san.tests.OrangeHRMTests"/>
+            <class name="com.san.listeners.Runner"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
