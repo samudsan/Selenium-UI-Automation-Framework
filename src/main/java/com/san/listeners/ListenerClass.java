@@ -1,39 +1,42 @@
 package com.san.listeners;
 
+import com.san.reports.ExtentLogger;
+import com.san.reports.ExtentReport;
 import org.testng.*;
 
-public class ListenersClass implements ITestListener, ISuiteListener {
+import java.io.IOException;
+
+public class ListenerClass  implements ITestListener, ISuiteListener {
     @Override
     public void onStart(ISuite iSuite) {
-        System.out.println("Before Suite in Listeners class");
+        ExtentReport.initReports();
     }
 
     @Override
     public void onFinish(ISuite iSuite) {
-        System.out.println("After Suite in Listeners class");
+        try {
+            ExtentReport.flushReports();
+        } catch (IOException e) { throw new RuntimeException(e);}
     }
 
     @Override
     public void onTestStart(ITestResult iTestResult) {
-        System.out.println("Before method in Listeners class");
-
+        ExtentReport.createTest(iTestResult.getMethod().getMethodName());
     }
 
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
-        System.out.println("after method in Listeners class: pass");
-
+        ExtentLogger.pass("Test Method "+iTestResult.getMethod().getMethodName() + " is Passed");
     }
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
-        System.out.println("after method in Listeners class: fail and I'm attaching screenshots here");
-
+        ExtentLogger.fail("Test Method "+iTestResult.getMethod().getMethodName() + " is Failed");
     }
 
     @Override
     public void onTestSkipped(ITestResult iTestResult) {
-        System.out.println("after method in Listeners class: test skipper or ignored.");
+        ExtentLogger.skip("Test Method "+iTestResult.getMethod().getMethodName() + " is Skipped");
     }
 
     @Override

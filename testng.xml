@@ -2,11 +2,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Selenium Automation Framework" data-provider-thread-count="2">
     <listeners>
-        <listener class-name="com.san.listeners.MethodInterceptor"></listener>
+        <listener class-name="com.san.listeners.ListenerClass" />
     </listeners>
     <test thread-count="1" parallel="methods" name="Regression">
         <classes>
-            <class name="com.san.listeners.Runner"/>
+            <class name="com.san.tests.OrangeHRMTests"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
