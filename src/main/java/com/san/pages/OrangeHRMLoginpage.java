@@ -14,20 +14,17 @@ public final class OrangeHRMLoginpage extends BasePage{
 
 
     public OrangeHRMLoginpage enterUserName(String username){
-        sendKeys(textbox_username, username, WaitStrategy.PRESENSE);
-        ExtentLogger.pass("entered UserName");
+        sendKeys(textbox_username, username, WaitStrategy.PRESENSE, "username");
         return new OrangeHRMLoginpage(); //same we can achieve through return this
     }
 
     public OrangeHRMLoginpage enterUserpassword(String password){
-        sendKeys(textbox_password, password, WaitStrategy.PRESENSE);
-        ExtentLogger.pass("entered password");
+        sendKeys(textbox_password, password, WaitStrategy.PRESENSE, "password");
         return this;
     }
 
     public OrangeHRMHomepage clickLogin() throws Exception {
-        click(button_login, WaitStrategy.CLICKABLE);
-        ExtentLogger.pass("Clicked Login");
+        click(button_login, WaitStrategy.CLICKABLE, "login button");
         return new OrangeHRMHomepage();
     }
 

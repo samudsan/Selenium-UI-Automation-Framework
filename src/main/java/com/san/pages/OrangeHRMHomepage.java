@@ -13,14 +13,12 @@ public final class OrangeHRMHomepage extends BasePage{
     private final By link_logout =  By.xpath("//a[contains(text(), 'Logout')]");
 
     public OrangeHRMHomepage clickWelcome(){
-        click(link_welcome, WaitStrategy.CLICKABLE);
-        ExtentLogger.pass("clicked on link_welcome");
+        click(link_welcome, WaitStrategy.CLICKABLE, "Welcome Link");
         return this;
     }
 
     public OrangeHRMLoginpage clickLogout(){
-        click(link_logout, WaitStrategy.CLICKABLE);
-        ExtentLogger.pass("clicked on link_logout");
+        click(link_logout, WaitStrategy.CLICKABLE, "Logout Link");
         return new OrangeHRMLoginpage();
     }
 
