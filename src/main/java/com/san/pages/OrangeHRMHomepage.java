@@ -1,10 +1,6 @@
 package com.san.pages;
 
-import com.san.driver.Driver;
 import com.san.enums.WaitStrategy;
-import com.san.reports.ExtentLogger;
-import com.san.reports.ExtentManager;
-import com.san.reports.ExtentReport;
 import org.openqa.selenium.By;
 
 public final class OrangeHRMHomepage extends BasePage{
@@ -22,7 +18,7 @@ public final class OrangeHRMHomepage extends BasePage{
         return new OrangeHRMLoginpage();
     }
 
-    public String getTittle(){
-        return Driver.getDriver().getTitle();
+    public boolean isLandedHomePage(){
+        return isLandedCorrectPage(link_welcome, WaitStrategy.PRESENSE);
     }
 }

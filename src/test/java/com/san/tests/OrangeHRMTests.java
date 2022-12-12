@@ -20,10 +20,9 @@ public final class OrangeHRMTests extends BaseTest{
     @Test(dataProvider = "loginDataProvider")
     public void loginLogoutTest(Map<String, String> map) throws Exception {
         OrangeHRMLoginpage loginPage = new OrangeHRMLoginpage();
-        String title = loginPage.enterUserName(map.get("username"))
-                .enterUserpassword(map.get("password")).clickLogin().getTittle();
-        // Validation
-        Assertions.assertThat(title).isEqualTo("OrangeHRM");
+        boolean landedHomePage = loginPage.enterUserName(map.get("username"))
+                .enterUserpassword(map.get("password")).clickLogin().isLandedHomePage();
+        Assertions.assertThat(landedHomePage).isTrue();
 
     }
 
@@ -31,14 +30,13 @@ public final class OrangeHRMTests extends BaseTest{
     public void logoutTest() throws Exception {
         OrangeHRMLoginpage loginPage = new OrangeHRMLoginpage();
         OrangeHRMHomepage homepage = loginPage.enterUserName("admin").enterUserpassword("admin123").clickLogin();
-        homepage.clickWelcome().clickLogout();
-        //intentionally failing this
-        Assertions.assertThat(false).isEqualTo(true);
+        boolean landedLoginPage = homepage.clickWelcome().clickLogout().isLandedLoginPage();
+        Assertions.assertThat(landedLoginPage).isTrue();
     }
 
 
     @DataProvider(name="loginDataProvider", parallel = true)
-    protected Object[] loginDataProvider() throws IOException {
+    private Object[] loginDataProvider() throws IOException {
         FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"/testdata/testdata.xlsx");
         XSSFWorkbook workbook = new XSSFWorkbook(fis);
         XSSFSheet sheet = workbook.getSheet("testdata_login");

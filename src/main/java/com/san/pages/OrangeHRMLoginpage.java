@@ -1,16 +1,13 @@
 package com.san.pages;
 
 import com.san.enums.WaitStrategy;
-import com.san.reports.ExtentLogger;
-import com.san.reports.ExtentManager;
-import com.san.reports.ExtentReport;
 import org.openqa.selenium.By;
 
 public final class OrangeHRMLoginpage extends BasePage{
 
-    private By textbox_username = By.name("username");
-    private By textbox_password = By.name("password");
-    private By button_login = By.xpath("//button[@type='submit']");
+    private final By textbox_username = By.name("username");
+    private final By textbox_password = By.name("password");
+    private final By button_login = By.xpath("//button[@type='submit']");
 
 
     public OrangeHRMLoginpage enterUserName(String username) throws Exception {
@@ -28,5 +25,7 @@ public final class OrangeHRMLoginpage extends BasePage{
         return new OrangeHRMHomepage();
     }
 
-
+    public boolean isLandedLoginPage(){
+        return isLandedCorrectPage(textbox_username, WaitStrategy.PRESENSE);
+    }
 }
