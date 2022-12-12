@@ -3,6 +3,7 @@ package com.san.reports;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.san.constants.FrameworkConstants;
 
 import java.awt.*;
 import java.io.File;
@@ -11,24 +12,33 @@ import java.util.Objects;
 
 public final class ExtentReport {
 
-    private ExtentReport(){}
+    private ExtentReport() throws Exception {}
 
     private static ExtentReports extentReports;
+    private static String extentReportPath;
 
-    public static void initReports(){
+    static {
+        try {
+            extentReportPath = FrameworkConstants.getExtentreportpath();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void initReports() {
         if(Objects.isNull(extentReports)){
             extentReports = new ExtentReports();
-            ExtentSparkReporter spark = new ExtentSparkReporter("target/Spark.html");
+            ExtentSparkReporter spark = new ExtentSparkReporter(extentReportPath);
             extentReports.attachReporter(spark);
             spark.config().setReportName("Automation Framework Test status");
         }
     }
 
-    public static void flushReports() throws IOException {
+    public static void flushReports() throws Exception {
         if(Objects.nonNull(extentReports)){
             extentReports.flush();
             // to open the file in Desktop default browser automatically after test execution finished.
-            Desktop.getDesktop().browse(new File("target/Spark.html").toURI());
+            Desktop.getDesktop().browse(new File(extentReportPath).toURI());
         }
     }
 

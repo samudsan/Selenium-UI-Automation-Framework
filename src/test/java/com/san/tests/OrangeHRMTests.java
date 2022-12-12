@@ -32,6 +32,8 @@ public final class OrangeHRMTests extends BaseTest{
         OrangeHRMLoginpage loginPage = new OrangeHRMLoginpage();
         OrangeHRMHomepage homepage = loginPage.enterUserName("admin").enterUserpassword("admin123").clickLogin();
         homepage.clickWelcome().clickLogout();
+        //intentionally failing this
+        Assertions.assertThat(false).isEqualTo(true);
     }
 
 

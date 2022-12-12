@@ -13,12 +13,12 @@ public final class OrangeHRMLoginpage extends BasePage{
     private By button_login = By.xpath("//button[@type='submit']");
 
 
-    public OrangeHRMLoginpage enterUserName(String username){
+    public OrangeHRMLoginpage enterUserName(String username) throws Exception {
         sendKeys(textbox_username, username, WaitStrategy.PRESENSE, "username");
         return new OrangeHRMLoginpage(); //same we can achieve through return this
     }
 
-    public OrangeHRMLoginpage enterUserpassword(String password){
+    public OrangeHRMLoginpage enterUserpassword(String password) throws Exception {
         sendKeys(textbox_password, password, WaitStrategy.PRESENSE, "password");
         return this;
     }
