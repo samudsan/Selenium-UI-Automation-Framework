@@ -9,9 +9,9 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Properties;
 
-public final class ReadPropertyFile {
+public final class ReadPropertyFileUtils {
 
-    private ReadPropertyFile() {
+    private ReadPropertyFileUtils() {
     }
 
     private static final Map<String, String> CONFIGMAP = new HashMap<>();

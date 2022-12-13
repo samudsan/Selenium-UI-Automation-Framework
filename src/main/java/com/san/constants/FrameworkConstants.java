@@ -1,8 +1,7 @@
 package com.san.constants;
 
 import com.san.enums.ConfigProperties;
-import com.san.utils.ReadPropertyFile;
-import org.openqa.selenium.json.JsonOutput;
+import com.san.utils.ReadPropertyFileUtils;
 
 import java.time.Duration;
 
@@ -17,10 +16,11 @@ public final class FrameworkConstants {  // final because we do not want anybody
     private static final Duration EXPLICITWAIT = Duration.ofSeconds(10);
 
     public static String getExtentreportpath() throws Exception{
-        if(ReadPropertyFile.getValue(ConfigProperties.OVERRIDEREPORT).equalsIgnoreCase("yes"))
-            return EXTENTREPORTPATH+"/"+System.currentTimeMillis()+"index.html";
-        else
+        if(ReadPropertyFileUtils.getValue(ConfigProperties.OVERRIDEREPORT).equalsIgnoreCase("yes"))
             return EXTENTREPORTPATH+"/"+"index.html";
+        else
+            return EXTENTREPORTPATH+"/"+System.currentTimeMillis()+"index.html";
+
     }
     public static String getChromeDriverPath(){
         return CHROMEDRIVERPATH;

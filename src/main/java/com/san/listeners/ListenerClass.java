@@ -6,6 +6,7 @@ import lombok.SneakyThrows;
 import org.testng.*;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 public class ListenerClass  implements ITestListener, ISuiteListener {
     @Override
@@ -40,6 +41,8 @@ public class ListenerClass  implements ITestListener, ISuiteListener {
     @Override
     public void onTestFailure(ITestResult iTestResult) {
         ExtentLogger.fail("Test Method "+iTestResult.getMethod().getMethodName() + " is Failed",true);
+        ExtentLogger.fail(iTestResult.getThrowable().toString());
+        ExtentLogger.fail(Arrays.toString(iTestResult.getThrowable().getStackTrace()));
     }
 
     @Override
