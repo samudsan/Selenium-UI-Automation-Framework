@@ -3,6 +3,8 @@
 <suite name="Selenium Automation Framework" data-provider-thread-count="4">
     <listeners>
         <listener class-name="com.san.listeners.ListenerClass" />
+        <listener class-name="com.san.listeners.MethodInterceptor" />
+
     </listeners>
     <test thread-count="1" parallel="methods" name="Regression">
         <classes>
