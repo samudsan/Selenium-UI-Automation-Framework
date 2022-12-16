@@ -1,12 +1,10 @@
 package com.san.tests;
 
 import com.san.pages.OrangeHRMHomepage;
-import com.san.pages.OrangeHRMLoginpage;
+import com.san.pages.OrangeHRMLoginPage;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.util.Map;
 
 public final class OrangeHRMTests extends BaseTest{
     private  OrangeHRMTests() {
@@ -14,17 +12,17 @@ public final class OrangeHRMTests extends BaseTest{
 
     @Test(dataProvider = "loginDataProvider")
     public void loginTest(String username, String password) throws Exception {
-        OrangeHRMLoginpage loginPage = new OrangeHRMLoginpage();
+        OrangeHRMLoginPage loginPage = new OrangeHRMLoginPage();
         boolean landedHomePage = loginPage.enterUserName(username)
-                .enterUserpassword(password).clickLogin().isLandedHomePage();
+                .enterUserPassword(password).clickLogin().isLandedHomePage();
         Assertions.assertThat(landedHomePage).isTrue();
 
     }
 
     @Test(dataProvider = "loginDataProvider")
     public void logoutTest(String username, String password) throws Exception {
-        OrangeHRMLoginpage loginPage = new OrangeHRMLoginpage();
-        OrangeHRMHomepage homepage = loginPage.enterUserName(username).enterUserpassword(password).clickLogin();
+        OrangeHRMLoginPage loginPage = new OrangeHRMLoginPage();
+        OrangeHRMHomepage homepage = loginPage.enterUserName(username).enterUserPassword(password).clickLogin();
         boolean landedLoginPage = homepage.clickWelcome().clickLogout().isLandedLoginPage();
         Assertions.assertThat(landedLoginPage).isTrue();
     }

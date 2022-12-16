@@ -13,9 +13,9 @@ public final class OrangeHRMHomepage extends BasePage{
         return this;
     }
 
-    public OrangeHRMLoginpage clickLogout() throws Exception {
+    public OrangeHRMLoginPage clickLogout() throws Exception {
         click(link_logout, WaitStrategy.CLICKABLE, "Logout Link");
-        return new OrangeHRMLoginpage();
+        return new OrangeHRMLoginPage();
     }
 
     public boolean isLandedHomePage(){

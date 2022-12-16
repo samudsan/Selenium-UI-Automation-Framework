@@ -7,7 +7,6 @@ import com.san.constants.FrameworkConstants;
 
 import java.awt.*;
 import java.io.File;
-import java.io.IOException;
 import java.util.Objects;
 
 public final class ExtentReport {
@@ -15,7 +14,7 @@ public final class ExtentReport {
     private ExtentReport() throws Exception {}
 
     private static ExtentReports extentReports;
-    private static String extentReportPath;
+    private static final String extentReportPath;
 
     static {
         try {

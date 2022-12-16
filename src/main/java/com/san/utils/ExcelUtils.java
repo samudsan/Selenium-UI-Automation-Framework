@@ -26,7 +26,7 @@ public final class ExcelUtils {
             int row = sheet.getLastRowNum();
             int lastcolomn = sheet.getRow(0).getLastCellNum();
 
-            Map<String, String> map = null;
+            Map<String, String> map;
             list = new ArrayList<>();
 
             for (int i = 1; i <= row; i++) {

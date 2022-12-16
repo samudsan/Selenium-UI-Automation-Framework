@@ -3,7 +3,6 @@ package com.san.factories;
 import com.san.constants.FrameworkConstants;
 import com.san.driver.Driver;
 import com.san.enums.WaitStrategy;
-import javafx.scene.web.WebErrorEvent;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -12,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class ExplicitWaitFactory {
 
     public static WebElement performExplicitWait(By by, WaitStrategy waitStrategy) {
-        WebElement webElement = null ;
+        WebElement webElement;
         if (waitStrategy == WaitStrategy.CLICKABLE){
             webElement = new WebDriverWait(Driver.getDriver(), FrameworkConstants.getExplicitwait())
                     .until(ExpectedConditions.elementToBeClickable(by));
