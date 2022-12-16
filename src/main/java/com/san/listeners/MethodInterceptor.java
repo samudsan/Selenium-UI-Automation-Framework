@@ -1,5 +1,6 @@
 package com.san.listeners;
 
+import com.san.constants.FrameworkConstants;
 import com.san.utils.ExcelUtils;
 import org.testng.IMethodInstance;
 import org.testng.IMethodInterceptor;
@@ -15,8 +16,8 @@ public class MethodInterceptor implements IMethodInterceptor {
     public List<IMethodInstance> intercept(List<IMethodInstance> listOfMethods, ITestContext iTestContext) {
 
         //below list contains all the testng methods that we are going to execute.
-        List <IMethodInstance> results =  new ArrayList<IMethodInstance>();
-        List<Map<String, String>> list = ExcelUtils.getTestData("RunManager");
+        List <IMethodInstance> results =  new ArrayList<>();
+        List<Map<String, String>> list = ExcelUtils.getTestData(FrameworkConstants.getRunManagerSheetName());
 
         for (int i = 0; i < listOfMethods.size(); i++) {
             for (int j = 0; j < list.size(); j++) {

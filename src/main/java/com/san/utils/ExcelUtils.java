@@ -24,14 +24,14 @@ public final class ExcelUtils {
             XSSFSheet sheet = workbook.getSheet(sheetName);
 
             int row = sheet.getLastRowNum();
-            int lastcolomn = sheet.getRow(0).getLastCellNum();
+            int lastColumn = sheet.getRow(0).getLastCellNum();
 
             Map<String, String> map;
             list = new ArrayList<>();
 
             for (int i = 1; i <= row; i++) {
                 map = new HashMap<>();
-                for (int j = 0; j < lastcolomn; j++) {
+                for (int j = 0; j < lastColumn; j++) {
                     String key = sheet.getRow(0).getCell(j).getStringCellValue();
                     String value = sheet.getRow(i).getCell(j).getStringCellValue();
                     map.put(key, value);

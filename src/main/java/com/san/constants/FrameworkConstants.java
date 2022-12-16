@@ -17,6 +17,8 @@ public final class FrameworkConstants {  // final because we do not want anybody
 
     private static final String RESOURCEPATH = System.getProperty("user.dir")+"/src/test/resources";
     private static final String EXCELPATH = RESOURCEPATH+"/testdata/testdata.xlsx";
+    private static final String loginDataSheetName = "testdata_login";
+    private static final String runManagerSheetName = "RunManager";
 
 
     public static String getExtentreportpath() throws Exception{
@@ -40,5 +42,13 @@ public final class FrameworkConstants {  // final because we do not want anybody
 
     public static String getExcelpath(){
         return EXCELPATH;
+    }
+
+    public static String getLoginDataSheetName(){
+        return loginDataSheetName;
+    }
+
+    public static String getRunManagerSheetName(){
+        return runManagerSheetName;
     }
 }
