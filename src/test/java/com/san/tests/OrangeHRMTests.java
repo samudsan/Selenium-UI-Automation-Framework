@@ -21,10 +21,10 @@ public final class OrangeHRMTests extends BaseTest{
 
     }
 
-    @Test()
-    public void logoutTest() throws Exception {
+    @Test(dataProvider = "loginDataProvider")
+    public void logoutTest(String username, String password) throws Exception {
         OrangeHRMLoginpage loginPage = new OrangeHRMLoginpage();
-        OrangeHRMHomepage homepage = loginPage.enterUserName("admin").enterUserpassword("admin123").clickLogin();
+        OrangeHRMHomepage homepage = loginPage.enterUserName(username).enterUserpassword(password).clickLogin();
         boolean landedLoginPage = homepage.clickWelcome().clickLogout().isLandedLoginPage();
         Assertions.assertThat(landedLoginPage).isTrue();
     }
