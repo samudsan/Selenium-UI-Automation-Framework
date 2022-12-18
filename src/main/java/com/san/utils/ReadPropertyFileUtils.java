@@ -32,6 +32,7 @@ public final class ReadPropertyFileUtils {
     }
     public static String getValue(ConfigProperties key) throws Exception {
         if(Objects.isNull(key) || Objects.isNull(CONFIGMAP.get(key.name().toLowerCase()))) // Here we are doing null check of key/value
+
             throw new Exception("There is no property available with key: "+key+ " Please check config.properties file");
         return CONFIGMAP.get(key.name().toLowerCase());
     }

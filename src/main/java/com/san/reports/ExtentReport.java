@@ -34,11 +34,13 @@ public final class ExtentReport {
     }
 
     public static void flushReports() throws Exception {
-        if(Objects.nonNull(extentReports)){
+        if(Objects.nonNull(extentReports)) {
             extentReports.flush();
-            // to open the file in Desktop default browser automatically after test execution finished.
-            Desktop.getDesktop().browse(new File(extentReportPath).toURI());
         }
+        ExtentManager.unload();
+        // to open the file in Desktop default browser automatically after test execution finished.
+        Desktop.getDesktop().browse(new File(extentReportPath).toURI());
+
     }
 
     public static void createTest(String testCaseName){

@@ -14,7 +14,6 @@ public class Driver {
         System.setProperty("webdriver.chrome.driver", FrameworkConstants.getChromeDriverPath());
         threadLocalDriver.set(new ChromeDriver());
         getDriver().get(ReadPropertyFileUtils.getValue(ConfigProperties.URL));
-        Thread.sleep(4000);
     }
     public static WebDriver getDriver(){
         return threadLocalDriver.get();
