@@ -26,6 +26,7 @@ public final class OrangeHRMTests extends BaseTest{
         OrangeHRMHomepage homepage = loginPage.enterUserName(data.get("username")).enterUserPassword(data.get("password")).clickLogin();
         boolean landedLoginPage = homepage.clickWelcome().clickLogout().isLandedLoginPage();
         Assertions.assertThat(landedLoginPage).isTrue();
+
     }
 
 }
