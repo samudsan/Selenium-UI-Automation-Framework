@@ -12,6 +12,7 @@ public final class FrameworkConstants {  // final because we do not want anybody
 
     private static final Duration EXPLICITWAIT = Duration.ofSeconds(10);
     private static final String CHROMEDRIVERPATH = System.getProperty("user.dir")+"/src/test/resources/executables/chromedriver.exe";
+    private static final String GECKODRIVERPATH = System.getProperty("user.dir")+"/src/test/resources/executables/geckodriver.exe";
     private static final String CONFIGPROPERTYFILEPATH = System.getProperty("user.dir") + "/src/test/resources/config/config.properties";
     private static final String EXTENTREPORTPATH = System.getProperty("user.dir")+"/extent-test-output";
 
@@ -30,6 +31,10 @@ public final class FrameworkConstants {  // final because we do not want anybody
     }
     public static String getChromeDriverPath(){
         return CHROMEDRIVERPATH;
+    }
+
+    public static String getGeckoDriverPath(){
+        return GECKODRIVERPATH;
     }
 
     public static String getConfigPropertyFilePath(){
