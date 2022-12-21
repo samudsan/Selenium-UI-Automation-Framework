@@ -9,13 +9,14 @@ import org.testng.ITestResult;
 public class RetryFailedTest implements IRetryAnalyzer {
 
     private int count = 0;
-    private static final int retryCount = 1;
-    private boolean retryFlag = false;
+    private int retryCount = 1;
+
     @SneakyThrows
     @Override
     public boolean retry(ITestResult iTestResult) {
+        boolean retryFlag = false;
         if(ReadPropertyFileUtils.getValue(ConfigProperties.RETRYFAILEDTESTS).equalsIgnoreCase("yes")) {
-            boolean retryFlag = count < retryCount;
+            retryFlag = count < retryCount;
             count++;
         }
         return retryFlag;

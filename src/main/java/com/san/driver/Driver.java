@@ -14,16 +14,18 @@ public class Driver {
     private final static ThreadLocal<WebDriver> threadLocalDriver =  new ThreadLocal<>();
 
     public static void  inItDriver(String browser) throws Exception {
-        if (Objects.isNull(getDriver()) && browser.equalsIgnoreCase("chrome")){
-            System.setProperty("webdriver.chrome.driver", FrameworkConstants.getChromeDriverPath());
-            threadLocalDriver.set(new ChromeDriver());
+        if (Objects.isNull(getDriver())){
+            if(browser.equalsIgnoreCase("chrome")) {
+                System.setProperty("webdriver.chrome.driver", FrameworkConstants.getChromeDriverPath());
+                threadLocalDriver.set(new ChromeDriver());
+            }
+
+            else if (browser.equalsIgnoreCase("firefox")) {
+                System.setProperty("webdriver.gecko.driver", FrameworkConstants.getGeckoDriverPath());
+                threadLocalDriver.set(new FirefoxDriver());
+            }
          }
 
-        if (Objects.isNull(getDriver()) && browser.equalsIgnoreCase("firefox")){
-            System.setProperty("webdriver.gecko.driver", FrameworkConstants.getGeckoDriverPath());
-            threadLocalDriver.set(new FirefoxDriver());
-        }
-        getDriver().get(ReadPropertyFileUtils.getValue(ConfigProperties.URL));
         getDriver().get(ReadPropertyFileUtils.getValue(ConfigProperties.URL));
     }
     public static WebDriver getDriver(){
