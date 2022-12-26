@@ -1,5 +1,6 @@
 package com.san.listeners;
 
+import com.san.annotation.FrameworkAnnotation;
 import com.san.reports.ExtentLogger;
 import com.san.reports.ExtentReport;
 import lombok.SneakyThrows;
@@ -31,6 +32,8 @@ public class ListenerClass  implements ITestListener, ISuiteListener {
     public void onTestStart(ITestResult iTestResult) {
         //ExtentReport.createTest(iTestResult.getMethod().getMethodName());
         ExtentReport.createTest(iTestResult.getMethod().getDescription());
+        ExtentReport.addAuthors(iTestResult.getMethod().getConstructorOrMethod().getMethod().getAnnotation(FrameworkAnnotation.class).author());
+        ExtentReport.addCategory(iTestResult.getMethod().getConstructorOrMethod().getMethod().getAnnotation(FrameworkAnnotation.class).category());
     }
 
     @Override
