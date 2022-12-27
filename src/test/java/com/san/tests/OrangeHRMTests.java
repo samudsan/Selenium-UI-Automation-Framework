@@ -1,6 +1,7 @@
 package com.san.tests;
 
 import com.san.annotation.FrameworkAnnotation;
+import com.san.enums.CategoryType;
 import com.san.pages.OrangeHRMHomepage;
 import com.san.pages.OrangeHRMLoginPage;
 import com.san.reports.ExtentManager;
@@ -12,7 +13,7 @@ import java.util.Map;
 public final class OrangeHRMTests extends BaseTest{
     private  OrangeHRMTests() {
     }
-    @FrameworkAnnotation(author = {"Sandeep", "Dileep"}, category = "Regression")
+    @FrameworkAnnotation(author = {"Sandeep", "Dileep"}, category = CategoryType.ACCEPTANCE)
     @Test
     public void loginTest(Map<String, String> data ) throws Exception {
         OrangeHRMLoginPage loginPage = new OrangeHRMLoginPage();
@@ -20,7 +21,7 @@ public final class OrangeHRMTests extends BaseTest{
                 .enterUserPassword(data.get("password")).clickLogin().isLandedHomePage();
         Assertions.assertThat(landedHomePage).isTrue();
     }
-    @FrameworkAnnotation(author = "Sandeep", category = {"Sanity", "Regression"})
+    @FrameworkAnnotation(author = "Sandeep", category = {CategoryType.SANITY, CategoryType.REGRESSION})
     @Test
     public void logoutTest(Map<String, String> data) throws Exception {
 
