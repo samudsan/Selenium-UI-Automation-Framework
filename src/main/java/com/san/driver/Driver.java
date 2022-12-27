@@ -13,7 +13,7 @@ public class Driver {
 
     private final static ThreadLocal<WebDriver> threadLocalDriver =  new ThreadLocal<>();
 
-    public static void  inItDriver(String browser) throws Exception {
+    public static void  inItDriver(String browser) {
         if (Objects.isNull(getDriver())){
             if(browser.equalsIgnoreCase("chrome")) {
                 System.setProperty("webdriver.chrome.driver", FrameworkConstants.getChromeDriverPath());

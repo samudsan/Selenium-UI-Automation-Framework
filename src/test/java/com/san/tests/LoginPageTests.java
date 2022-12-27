@@ -8,7 +8,7 @@ public final class LoginPageTests extends BaseTest{
     }
 
     @Test
-    public void test1() throws Exception {
+    public void test1(){
         System.out.println("working fine");
     }
 

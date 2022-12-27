@@ -3,29 +3,19 @@ package com.san.listeners;
 import com.san.annotation.FrameworkAnnotation;
 import com.san.reports.ExtentLogger;
 import com.san.reports.ExtentReport;
-import lombok.SneakyThrows;
 import org.testng.*;
 
-import java.io.IOException;
 import java.util.Arrays;
 
 public class ListenerClass  implements ITestListener, ISuiteListener {
     @Override
     public void onStart(ISuite iSuite) {
-        try {
             ExtentReport.initReports();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 
     @Override
     public void onFinish(ISuite iSuite) {
-        try {
             ExtentReport.flushReports();
-        } catch (IOException e) { throw new RuntimeException(e);} catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 
     @Override
@@ -41,7 +31,6 @@ public class ListenerClass  implements ITestListener, ISuiteListener {
         ExtentLogger.pass("Test Method "+iTestResult.getMethod().getMethodName() + " is Passed");
     }
 
-    @SneakyThrows
     @Override
     public void onTestFailure(ITestResult iTestResult) {
         ExtentLogger.fail("Test Method "+iTestResult.getMethod().getMethodName() + " is Failed",true);

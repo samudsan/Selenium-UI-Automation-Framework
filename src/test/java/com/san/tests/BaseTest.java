@@ -13,7 +13,7 @@ public class BaseTest {
 
 
     @BeforeMethod
-    public void setUp() throws Exception {
+    public void setUp() {
         Driver.inItDriver(ReadPropertyFileUtils.getValue(ConfigProperties.BROWSER));
     }
 

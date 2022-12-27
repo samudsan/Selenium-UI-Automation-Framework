@@ -8,13 +8,13 @@ import org.openqa.selenium.WebElement;
 
 
 public class BasePage {
-    protected void click(By by, WaitStrategy waitStrategy, String elementName) throws Exception {
+    protected void click(By by, WaitStrategy waitStrategy, String elementName) {
         WebElement webElement = ExplicitWaitFactory.performExplicitWait(by, waitStrategy);
         webElement.click();
         ExtentLogger.pass("clicked on "+ elementName, true);
     }
 
-    protected void sendKeys(By by, String str,  WaitStrategy waitStrategy, String elementName) throws Exception {
+    protected void sendKeys(By by, String str,  WaitStrategy waitStrategy, String elementName)  {
         WebElement webElement = ExplicitWaitFactory.performExplicitWait(by, waitStrategy);
         webElement.sendKeys(str);
         ExtentLogger.pass("value " +str+" entered in "+ elementName, true);

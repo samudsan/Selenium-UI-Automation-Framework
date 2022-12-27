@@ -13,13 +13,13 @@ import java.util.List;
 import java.util.Map;
 
 public final class ExcelUtils {
-    private ExcelUtils() throws Exception {}
+    private ExcelUtils() {}
 
     public static List<Map<String, String>> getTestData(String sheetName){
-        List<Map<String, String>> list = null;
-        FileInputStream fis = null;
-        try {
-            fis= new FileInputStream(FrameworkConstants.getExcelpath());
+        List<Map<String, String>> list;
+
+        // below is try with resources, supported from java 1.8
+        try(FileInputStream fis = new FileInputStream(FrameworkConstants.getExcelpath())) {
             XSSFWorkbook workbook = new XSSFWorkbook(fis);
             XSSFSheet sheet = workbook.getSheet(sheetName);
 
@@ -39,18 +39,16 @@ public final class ExcelUtils {
                 list.add(map);
             }
         }
+        /* when we use these custom exceptions it will stop our program whenever we get any exception
+        meaning if we get FileNotFoundException, it will not try to perform further operations mentioned
+        try block. even it is not sensible to further operations. */
         catch (FileNotFoundException e){
             e.printStackTrace();
+            throw new RuntimeException("Excel File is Not available, Please check path or Name of file is correct");
         }
         catch (IOException e1){
             e1.printStackTrace();
-        }
-        finally {
-            try {
-                fis.close();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            throw new RuntimeException("There is an issue in Reading data from the Excel File.");
         }
         return list;
     }

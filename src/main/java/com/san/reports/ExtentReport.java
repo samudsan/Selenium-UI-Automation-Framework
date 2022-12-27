@@ -8,21 +8,18 @@ import com.san.enums.CategoryType;
 
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 import java.util.Objects;
 
 public final class ExtentReport {
 
-    private ExtentReport() throws Exception {}
+    private ExtentReport() {}
 
     private static ExtentReports extentReports;
     private static final String extentReportPath;
 
     static {
-        try {
-            extentReportPath = FrameworkConstants.getExtentreportpath();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        extentReportPath = FrameworkConstants.getExtentreportpath();
     }
 
     public static void initReports() {
@@ -34,14 +31,17 @@ public final class ExtentReport {
         }
     }
 
-    public static void flushReports() throws Exception {
+    public static void flushReports() {
         if(Objects.nonNull(extentReports)) {
             extentReports.flush();
         }
         ExtentManager.unload();
         // to open the file in Desktop default browser automatically after test execution finished.
-        Desktop.getDesktop().browse(new File(extentReportPath).toURI());
-
+        try {
+            Desktop.getDesktop().browse(new File(extentReportPath).toURI());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static void createTest(String testCaseName){

@@ -4,7 +4,6 @@ import com.san.annotation.FrameworkAnnotation;
 import com.san.enums.CategoryType;
 import com.san.pages.OrangeHRMHomepage;
 import com.san.pages.OrangeHRMLoginPage;
-import com.san.reports.ExtentManager;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 
@@ -15,15 +14,15 @@ public final class OrangeHRMTests extends BaseTest{
     }
     @FrameworkAnnotation(author = {"Sandeep", "Dileep"}, category = CategoryType.ACCEPTANCE)
     @Test
-    public void loginTest(Map<String, String> data ) throws Exception {
+    public void loginTest(Map<String, String> data ) {
         OrangeHRMLoginPage loginPage = new OrangeHRMLoginPage();
         boolean landedHomePage = loginPage.enterUserName(data.get("username"))
                 .enterUserPassword(data.get("password")).clickLogin().isLandedHomePage();
         Assertions.assertThat(landedHomePage).isTrue();
     }
-    @FrameworkAnnotation(author = "Sandeep", category = {CategoryType.SANITY, CategoryType.REGRESSION})
+    @FrameworkAnnotation(category = {CategoryType.SANITY, CategoryType.REGRESSION})
     @Test
-    public void logoutTest(Map<String, String> data) throws Exception {
+    public void logoutTest(Map<String, String> data)  {
 
         OrangeHRMLoginPage loginPage = new OrangeHRMLoginPage();
         OrangeHRMHomepage homepage = loginPage.enterUserName(data.get("username")).enterUserPassword(data.get("password")).clickLogin();

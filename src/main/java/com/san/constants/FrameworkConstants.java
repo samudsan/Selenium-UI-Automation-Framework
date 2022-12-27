@@ -22,7 +22,7 @@ public final class FrameworkConstants {  // final because we do not want anybody
     private static final String runManagerSheetName = "RunManager";
 
 
-    public static String getExtentreportpath() throws Exception{
+    public static String getExtentreportpath() {
         if(ReadPropertyFileUtils.getValue(ConfigProperties.OVERRIDEREPORT).equalsIgnoreCase("yes"))
             return EXTENTREPORTPATH+"/"+"index.html";
         else
