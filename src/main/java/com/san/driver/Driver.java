@@ -3,6 +3,7 @@ package com.san.driver;
 import com.san.constants.FrameworkConstants;
 import com.san.enums.ConfigProperties;
 import com.san.utils.ReadPropertyFileUtils;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -16,12 +17,12 @@ public class Driver {
     public static void  inItDriver(String browser) {
         if (Objects.isNull(getDriver())){
             if(browser.equalsIgnoreCase("chrome")) {
-                System.setProperty("webdriver.chrome.driver", FrameworkConstants.getChromeDriverPath());
+                WebDriverManager.chromedriver().setup();
                 threadLocalDriver.set(new ChromeDriver());
             }
 
             else if (browser.equalsIgnoreCase("firefox")) {
-                System.setProperty("webdriver.gecko.driver", FrameworkConstants.getGeckoDriverPath());
+                WebDriverManager.firefoxdriver().setup();
                 threadLocalDriver.set(new FirefoxDriver());
             }
          }

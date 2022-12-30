@@ -43,7 +43,14 @@
             <artifactId>extentreports</artifactId>
             <version>${extent.reports.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+        </dependency>
+
     </dependencies>
+
 
     <properties>
         <testng.version>6.14.3</testng.version>
@@ -54,6 +61,7 @@
         <extent.reports.version>5.0.9</extent.reports.version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <webdrivermanager.version>5.3.1</webdrivermanager.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
