@@ -57,7 +57,7 @@
 
     <properties>
         <testng.version>6.14.3</testng.version>
-        <selenium.version>4.5.0</selenium.version>
+        <selenium.version>4.9.0</selenium.version>
         <assertj.version>3.23.1</assertj.version>
         <apache.poi.version>5.0.0</apache.poi.version>
         <apache.poi-ooxml.version>5.0.0</apache.poi-ooxml.version>
