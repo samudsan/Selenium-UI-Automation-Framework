@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface FrameworkAnnotation {
-    public String[] author() default "Sandeep";
-    public CategoryType[] category() default CategoryType.REGRESSION;
+    String[] author() default "Sandeep";
+    CategoryType[] category() default CategoryType.REGRESSION;
 
 }
