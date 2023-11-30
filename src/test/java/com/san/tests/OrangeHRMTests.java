@@ -20,15 +20,14 @@ public final class OrangeHRMTests extends BaseTest{
                 .enterUserPassword(data.get("password")).clickLogin().isLandedHomePage();
         Assertions.assertThat(landedHomePage).isTrue();
     }
+
     @FrameworkAnnotation(category = {CategoryType.SANITY, CategoryType.REGRESSION})
     @Test
     public void logoutTest(Map<String, String> data)  {
-
         OrangeHRMLoginPage loginPage = new OrangeHRMLoginPage();
         OrangeHRMHomepage homepage = loginPage.enterUserName(data.get("username")).enterUserPassword(data.get("password")).clickLogin();
         boolean landedLoginPage = homepage.clickWelcome().clickLogout().isLandedLoginPage();
         Assertions.assertThat(landedLoginPage).isTrue();
-
     }
 
 }

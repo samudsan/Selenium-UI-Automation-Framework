@@ -29,7 +29,7 @@ public class Driver {
 
         getDriver().get(ReadPropertyFileUtils.getValue(ConfigProperties.URL));
     }
-    public static WebDriver getDriver(){
+    public static WebDriver getDriver  (){
         return threadLocalDriver.get();
     }
 

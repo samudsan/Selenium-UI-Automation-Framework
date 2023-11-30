@@ -12,5 +12,4 @@ import java.lang.annotation.Target;
 public @interface FrameworkAnnotation {
     String[] author() default "Sandeep";
     CategoryType[] category() default CategoryType.REGRESSION;
-
 }

@@ -7,7 +7,7 @@
         <listener class-name="com.san.listeners.AnnotationTransformer"/>
     </listeners>
 
-    <test thread-count="1" parallel="methods" name="Regression">
+    <test thread-count="2" parallel="methods" name="Regression">
         <classes>
             <class name="com.san.tests.OrangeHRMTests"/>
         </classes>
